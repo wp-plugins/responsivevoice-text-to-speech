@@ -3,7 +3,7 @@
 Plugin Name: ResponsiveVoice Text To Speech
 Plugin URI: 
 Description: An easy to use plugin to integrate ResponsiveVoice Text to Speech into your WP blog.
-Version: 0.6.3
+Version: 1.0.5
 Author: ResponsiveVoice
 Author URI: http://responsivevoice.com
 License: GPL2
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 wp_register_script( 'responsive-voice', 'http://code.responsivevoice.org/responsivevoice.js');
 wp_enqueue_script( 'responsive-voice');
-add_action('wp_enqueue_scripts', 'RV_add_listen_button');
+add_action('init', 'RV_add_listen_button');
 
 function RV_add_voicebox(){
 	$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-192x192.png';
@@ -44,86 +44,45 @@ function RV_add_voicebox(){
 	return $RVTextToSpeechWidget;	
 }
 
-function RV_add_listen_button(){
-	global $post;
+function RV_add_listen_button($atts){
 	$postcontent = get_the_content();
-	$postcontent = strip_shortcodes($postcontent);    
+	$postcontent = strip_shortcodes($postcontent);
 	$postcontent = wp_strip_all_tags($postcontent, true);
 	$postcontent = preg_replace("/&nbsp;/", "", $postcontent);    
 	$postcontent = str_replace(array("'",'"'),array("\'",'\"'),$postcontent); // Get rid of quotation marks (single and double).
 	$postcontent = preg_replace('/\s+/', ' ', trim($postcontent)); // Get rid of /n and /s in the string.
-	$singlequote = "'";
-    
+    extract(shortcode_atts(array(
+      'voice' => 'UK English Female',
+   ), $atts));
+
+	// QQQ Check if the voice given exists.
+	/*if($voice != null){
+		$voicelist = "<script>responsiveVoice.getVoices();</script>";
+		$voiceexists = false;
+		for($i = 0; $i < count($voicelist); $i++)
+		{
+			if($voicelist[i] == $voice)
+			{
+				$voiceexists = true;
+				break;
+			}
+		}
+		if($voiceexists == false)
+		{
+			$voice = 'UK English Female';
+		}
+	}*/
+
+
 	$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-16x16.png';
-	$RVListenButton = "<button id='listenButton' class='butt js--triggerAnimation' type='button' value='Play'><img src='$iconurl'></img> Listen to this</button>	
-	<script>listenButton.onclick = function(){responsiveVoice.speak($singlequote.$postcontent.$singlequote, 'UK English Female');};</script>";
+
+	// QQQ Check if voice is playing.
+	$RVListenButton = "<button id='listenButton' class='butt js--triggerAnimation' type='button' value='Play'><img src='$iconurl'></img> Listen to this</button>
+	<script>listenButton.onclick = function(){responsiveVoice.speak('$postcontent', '$voice');};</script>";
 		
 	return $RVListenButton;
 }
 
-/*
-add_action( 'admin_menu', 'RV_add_admin_menu' );
-add_action( 'admin_init', 'RV_settings_init' );
-
-
-function RV_add_admin_menu() { 
-	add_options_page( 'ResponsiveVoice', 'ResponsiveVoice', 'manage_options', 'responsivevoice', 'responsivevoice_options_page' );
-}
-
-function RV_settings_init() { 
-	register_setting( 'pluginPage', 'RV_settings' );
-
-	add_settings_section(
-		'RV_pluginPage_section', 
-		__( '"Listen to this" button', 'wordpress' ), 
-		'RV_settings_section_callback', 
-		'pluginPage'
-	);
-
-	add_settings_field( 
-		'RV_select_field_0', 
-		__( 'Settings field description', 'wordpress' ), 
-		'RV_select_field_0_render', 
-		'pluginPage', 
-		'RV_pluginPage_section' 
-	);
-}
-
-
-function RV_select_field_0_render(  ) { 
-	$options = get_option( 'RV_settings' );
-	?>
-	<select name='RV_settings[RV_select_field_0]'>
-		<option value='1' <?php selected( $options['RV_select_field_0'], 1 ); ?>>Option 1</option>
-		<option value='2' <?php selected( $options['RV_select_field_0'], 2 ); ?>>Option 2</option>
-	</select>
-<?php
-}
-
-
-function RV_settings_section_callback() {
-	echo __( 'Change options for the "Listen to this" button', 'wordpress' );
-}
-
-function RV_options_page(  ) {
-	?>
-	<form action='options.php' method='post'>
-		
-		<h2>ResponsiveVoice</h2>
-		
-		<?php
-		settings_fields( 'pluginPage' );
-		do_settings_sections( 'pluginPage' );
-		submit_button();
-		?>		
-	</form>
-	<?php
-}
-*/
-
-add_shortcode('ResponsiveVoiceBox', 'RV_add_voicebox');
-add_shortcode('ListenToPostButton', 'RV_add_listen_button');
-
-// ->QQQ create options page
-// QQQ Select voice in options
+add_shortcode('RVTextBox', 'RV_add_voicebox');
+add_shortcode('RVListenButton', 'RV_add_listen_button');
 ?>
