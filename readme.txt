@@ -67,10 +67,16 @@ If you have experienced any problems with this plugin please let us know by cont
 
 == Changelog ==
 
+= 1.0.5 =
+* Support for voice attribute in shortcode
+
 = 1.0 =
 * This is the initial release of the plugin
 
 == Upgrade Notice ==
+
+= 1.0.5 =
+* Added support for voice attribute in shortcode, choose from 52 ResponsiveVoices
 
 = 1.0 =
 * This is the initial release of the plugin
