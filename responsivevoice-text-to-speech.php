@@ -3,7 +3,7 @@
 Plugin Name: ResponsiveVoice Text To Speech
 Plugin URI: 
 Description: An easy to use plugin to integrate ResponsiveVoice Text to Speech into your WP blog.
-Version: 1.0.5
+Version: 1.1
 Author: ResponsiveVoice
 Author URI: http://responsivevoice.com
 License: GPL2
@@ -53,6 +53,7 @@ function RV_add_listen_button($atts){
 	$postcontent = preg_replace('/\s+/', ' ', trim($postcontent)); // Get rid of /n and /s in the string.
     extract(shortcode_atts(array(
       'voice' => 'UK English Female',
+		'buttontext' => 'Listen to this'
    ), $atts));
 
 	// QQQ Check if the voice given exists.
@@ -73,16 +74,23 @@ function RV_add_listen_button($atts){
 		}
 	}*/
 
-
 	$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-16x16.png';
-
-	// QQQ Check if voice is playing.
-	$RVListenButton = "<button id='listenButton' class='butt js--triggerAnimation' type='button' value='Play'><img src='$iconurl'></img> Listen to this</button>
-	<script>listenButton.onclick = function(){responsiveVoice.speak('$postcontent', '$voice');};</script>";
+	$RVListenButton = "<button id='listenButton' class='butt js--triggerAnimation' type='button' value='Play'><img src='$iconurl'></img> $buttontext </button>
+	<script> listenButton.onclick = function(){if(responsiveVoice.isPlaying()){responsiveVoice.cancel();}else{responsiveVoice.speak('$postcontent', '$voice');}}; </script>";
 		
 	return $RVListenButton;
 }
 
+// Voicebox shortcodes
+add_shortcode('ResponsiveVoiceBox', 'RV_add_voicebox');
 add_shortcode('RVTextBox', 'RV_add_voicebox');
+
+// "Listen to this" shortcodes
+add_shortcode('ListenToPostButton', 'RV_add_listen_button');
 add_shortcode('RVListenButton', 'RV_add_listen_button');
+
+/* Variables assigned through attributes:
+ * $voice, from RV_add_listen_button()
+ * $buttontext, from RV_add_listen_button()
+ */
 ?>
