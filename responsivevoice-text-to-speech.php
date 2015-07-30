@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: ResponsiveVoice Text To Speech
-Plugin URI: 
+Plugin URI: responsivevoice.com/wordpress-text-to-speech-plugin/?utm_source=wpadmin&utm_medium=plugin&utm_campaign=wprvttsplugin
 Description: An easy to use plugin to integrate ResponsiveVoice Text to Speech into your WP blog.
-Version: 1.1
+Version: 1.1.1
 Author: ResponsiveVoice
 Author URI: http://responsivevoice.com
 License: GPL2
@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 wp_register_script( 'responsive-voice', 'http://code.responsivevoice.org/responsivevoice.js');
 wp_enqueue_script( 'responsive-voice');
 add_action('init', 'RV_add_listen_button');
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'RV_custom_plugin_action_links');
 
 function RV_add_voicebox(){
 	$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-192x192.png';
@@ -41,20 +42,20 @@ function RV_add_voicebox(){
 <div style='float:left' class='poweredby_container'><img src=$iconurl height='64' width='64' align='middle'></img><div class='poweredby'>Powered by<br/><strong>ResponsiveVoice</strong></div></div>
 <div style='clear: both;'>&nbsp;</div>";
 
-	return $RVTextToSpeechWidget;	
+	return $RVTextToSpeechWidget;
 }
 
 function RV_add_listen_button($atts){
 	$postcontent = get_the_content();
 	$postcontent = strip_shortcodes($postcontent);
 	$postcontent = wp_strip_all_tags($postcontent, true);
-	$postcontent = preg_replace("/&nbsp;/", "", $postcontent);    
-	$postcontent = str_replace(array("'",'"'),array("\'",'\"'),$postcontent); // Get rid of quotation marks (single and double).
+	$postcontent = preg_replace("/&nbsp;/", "", $postcontent);
+	$postcontent = str_replace(array("'", '"'), array("\'", '\"'), $postcontent); // Get rid of quotation marks (single and double).
 	$postcontent = preg_replace('/\s+/', ' ', trim($postcontent)); // Get rid of /n and /s in the string.
-    extract(shortcode_atts(array(
-      'voice' => 'UK English Female',
-		'buttontext' => 'Listen to this'
-   ), $atts));
+	extract(shortcode_atts(array(
+		'voice' => 'UK English Female',
+		'buttontext' => 'Listen to this',
+	), $atts));
 
 	// QQQ Check if the voice given exists.
 	/*if($voice != null){
@@ -75,10 +76,21 @@ function RV_add_listen_button($atts){
 	}*/
 
 	$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-16x16.png';
-	$RVListenButton = "<button id='listenButton' class='butt js--triggerAnimation' type='button' value='Play'><img src='$iconurl'></img> $buttontext </button>
-	<script> listenButton.onclick = function(){if(responsiveVoice.isPlaying()){responsiveVoice.cancel();}else{responsiveVoice.speak('$postcontent', '$voice');}}; </script>";
-		
+	$RVListenButton = "<button id='listenButton' class='butt js--triggerAnimation' type='button' value='Play'><img style='float:left;' src='$iconurl'> </img> $buttontext </button><script> listenButton.onclick = function(){if(responsiveVoice.isPlaying()){responsiveVoice.cancel();}else{responsiveVoice.speak('$postcontent', '$voice');}}; </script>";
+
 	return $RVListenButton;
+}
+
+function RV_custom_plugin_action_links( $links){
+
+	$new_links = array(
+		'<a href="http://responsivevoice.com/wordpress-text-to-speech-plugin/?utm_source=wordpress&utm_medium=plugin-action-row&utm_campaign=wp-plugin-launch" target="_blank">FAQ</a>',
+		'<a href="http://responsivevoice.com/support/?utm_source=wordpress&utm_medium=plugin-action-row&utm_campaign=wp-plugin-launch" target="_blank">Support</a>',
+
+	);
+	$links = array_merge($new_links, $links);
+
+	return $links;
 }
 
 // Voicebox shortcodes
