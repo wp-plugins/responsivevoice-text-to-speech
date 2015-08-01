@@ -37,11 +37,14 @@ Languages include UK English, US English, Spanish, French, Deutsch, Italian, Gre
 * ** It's Easy ** - To have the Listen button appear put the following shortcode anywhere in the text of your page or post.
 `[responsivevoice_button]`
 
-* ** Voices ** - Add a voice or language accent, a full list of ResponsiveVoice names is available at [Documentation](http://responsivevoice.com/wordpress-text-to-speech-plugin). Default is UK English Female.
+You can select a voice by using the "voice" parameter, and change the text that appears on the button with the "buttontext" parameter. The following shortcode will read in the US English Female voice, and the button will say "Play".
+`[responsivevoice_button voice="US English Female" buttontext="Play"]`
+A full list of ResponsiveVoice names is available at [Documentation](http://responsivevoice.org/text-to-speech-languages/). Default is UK English Female.
 `[responsivevoice_button voice="US English Female"]`
 
-* ** Customizable button text ** - You can change the text that appears on the button to better suit your website. Default is "Listen to this".
-`[responsivevoice_button buttontext="Play"]`
+* ** Read a whole page, or just sections of text ** - If you don't want the whole page or post to be read, just surround the salient text with 
+`[responsivevoice]Text you want ResponsiveVoice to read [/responsivevoice]`
+This tag also supports the voice and buttontext parameters.
 
 For more details, please see the [Documentation](http://responsivevoice.com/wordpress-text-to-speech-plugin)
 
@@ -51,18 +54,16 @@ There are no requirements, you do not need to install cURL.
 
 == Frequently Asked Questions ==
 
-= Can I remove the ResponsiveVoice branding? =
+= You can read our FAQs [here](http://responsivevoice.freshdesk.com/support/solutions "ResponsiveVoice Helpdesk")
 
-Yes. This option is available in the commercial license of ResponsiveVoice [ResponsiveVoice Commercial License](http://responsivevoice.com/wordpress-text-to-speech-plugin)
-
-If you have experienced any problems with this plugin please let us know by contacting our support department at [Support](http://responsivevoice.com/support "ResponsiveVoice") website.
+If you have experienced any problems with this plugin please let us know by contacting our support department at [Support](http://responsivevoice.com/support "ResponsiveVoice support") website.
 
 == Installation ==
 
 1. Unzip files.
 2. Upload the entire responsivevoice-text-to-speech folder to the /wp-content/plugins/ directory.
 3. Activate the plugin through the 'Plugins' menu in WordPress.
-4. Use the [responsivevoice_button] shortcode in your post or page.
+4. Use the shortcodes in your post or page.
 5. Enjoy!
 
 == Screenshots ==
@@ -73,10 +74,11 @@ If you have experienced any problems with this plugin please let us know by cont
 
 = 1.1.2 =
 * FIX: multiple instances of ResponsiveVoice buttons now work on the same page.
-* FEATURE: added the possibility to only speak a piece of text. Just surround it with [responsivevoice][/responsivevoice]. Its parameters are voice and buttontext, like with [responsivevoice_button].
+* FIX: fixed vertical alignment of the ResponsiveVoice logo in buttons.
+* FEATURE: added the possibility to only speak a piece of text. Just surround it with [responsivevoice] and [/responsivevoice]. Its parameters are voice and buttontext, like with [responsivevoice_button].
 
 = 1.1.1 =
-* FIX: Text in [RVListenButton] won't wrap anymore.
+* FIX: Text in [responsivevoice_button] won't wrap anymore.
 * Added FAQ and Support links to the plugin's action row in Wordpress' "Installed plugins" page.
 
 = 1.1 =
