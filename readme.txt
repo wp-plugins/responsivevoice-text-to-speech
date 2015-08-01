@@ -12,7 +12,7 @@ ResponsiveVoice the leading HTML5 text to speech synthesis solution, is now avai
 == Description ==
 [ResponsiveVoice](http://responsivevoice.com/wordpress-text-to-speech-plugin) is a HTML5-based Text-To-Speech library designed to add voice features to WordPress across all smartphone, tablet and desktop devices. It supports 51 languages through 168 voices and has no dependencies.
 
-Languages include UK English, US English, Spanish, French, Deutsch, Italian, Greek, Hungarian, Turkish, Russian, Dutch, Swedish, Norwegian, Japanese, Korean, Chinese, Hindi, Serbian, Croatian, Bosnian, Romanian, Catalan, Australian, Finnish, Afrikans, Albanian, Arabic, Armenian, Czech, Danish, Esperanto, Hatian Creole, Icelandic, Indonesian, Latin, Latvian, Macedonian, Moldavian, Montenegrin, Polish, Brazilian Portuguese, Portuguese, Serbo-Croatian, Slovak, Spanish Latin American, Swahili, Tamil, Thai, Vietnamese and Welsh.
+Languages include UK English, US English, Spanish, French, Deutsch, Italian, Greek, Hungarian, Turkish, Russian, Dutch, Swedish, Norwegian, Japanese, Korean, Chinese, Hindi, Serbian, Croatian, Bosnian, Romanian, Catalan, Australian, Finnish, Afrikaans, Albanian, Arabic, Armenian, Czech, Danish, Esperanto, Hatian Creole, Icelandic, Indonesian, Latin, Latvian, Macedonian, Moldavian, Montenegrin, Polish, Brazilian Portuguese, Portuguese, Serbo-Croatian, Slovak, Spanish Latin American, Swahili, Tamil, Thai, Vietnamese and Welsh.
 
 
 ### Support and Questions visit here first:
@@ -40,7 +40,6 @@ Languages include UK English, US English, Spanish, French, Deutsch, Italian, Gre
 You can select a voice by using the "voice" parameter, and change the text that appears on the button with the "buttontext" parameter. The following shortcode will read in the US English Female voice, and the button will say "Play".
 `[responsivevoice_button voice="US English Female" buttontext="Play"]`
 A full list of ResponsiveVoice names is available at [Documentation](http://responsivevoice.org/text-to-speech-languages/). Default is UK English Female.
-`[responsivevoice_button voice="US English Female"]`
 
 * ** Read a whole page, or just sections of text ** - If you don't want the whole page or post to be read, just surround the salient text with 
 `[responsivevoice]Text you want ResponsiveVoice to read [/responsivevoice]`
@@ -54,7 +53,7 @@ There are no requirements, you do not need to install cURL.
 
 == Frequently Asked Questions ==
 
-= You can read our FAQs [here](http://responsivevoice.freshdesk.com/support/solutions "ResponsiveVoice Helpdesk")
+You can read our FAQs [here](http://responsivevoice.freshdesk.com/support/solutions "ResponsiveVoice Helpdesk")
 
 If you have experienced any problems with this plugin please let us know by contacting our support department at [Support](http://responsivevoice.com/support "ResponsiveVoice support") website.
 
