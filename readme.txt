@@ -5,7 +5,7 @@ Donate link: http://responsivevoice.com/wordpress-text-to-speech-plugin
 Tags: audio, google translate, Google Voice, speech, text to audio, text to speech, text-to-speech, text2speech, speech synthesis api, webspeech api, voice, espeak, javascript, Speak, speech, spoken, text, text-to-speech, talk, listen, accessibility, a11y, webreader, ivona, tts, arabic, mp3, ogg, buddypress, button, chinese, english, french, german, google, welcome, greetings, hebrew, html, html5, iPad, iphone, italian, jquery, link, links, menus, mobile, multilingual, page, pages, plugin, plugins, portuguese, Post, posts, readability, Russian, seo, shortcode, sidebar, sound, spanish, gspeech, stats, tablet, tts, widget, wordpress, button, blind, visual impairment, elderly, ADA, BS 8878:2010, WCAG 2.0, Web Content Accessibility Guidelines 2.0
 Requires at least: 3.6
 Tested up to: 4.2.3
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 
 ResponsiveVoice the leading HTML5 text to speech synthesis solution, is now available for WordPress. Over 51 languages through 168 voices.
 
@@ -71,6 +71,10 @@ If you have experienced any problems with this plugin please let us know by cont
 
 == Changelog ==
 
+= 1.1.3 =
+ * Removed ResponsiveVoice icon from buttons, now the speaker emoji is displayed instead.
+ * FIX: Text in the button should not wrap around anymore.
+
 = 1.1.2 =
 * FIX: multiple instances of ResponsiveVoice buttons now work on the same page.
 * FIX: fixed vertical alignment of the ResponsiveVoice logo in buttons.
@@ -94,5 +98,5 @@ If you have experienced any problems with this plugin please let us know by cont
 
 == Upgrade Notice ==
 
-= 1.1.2 =
-* Support multiple button instances, added BBCode-style tags.
+= 1.1.3 =
+* New speaker icon!

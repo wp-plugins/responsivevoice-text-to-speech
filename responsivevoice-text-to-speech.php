@@ -3,7 +3,7 @@
 Plugin Name: ResponsiveVoice Text To Speech
 Plugin URI: responsivevoice.com/wordpress-text-to-speech-plugin/?utm_source=wpadmin&utm_medium=plugin&utm_campaign=wprvttsplugin
 Description: An easy to use plugin to integrate ResponsiveVoice Text to Speech into your WP blog.
-Version: 1.1.2
+Version: 1.1.3
 Author: ResponsiveVoice
 Author URI: http://responsivevoice.com
 License: GPL2
@@ -59,9 +59,11 @@ function RV_add_listen_button($atts){
 
 	// Check if voice exists.
 	//$voice = RV_check_voice($voice);
+	//$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-16x16.png';
 
-	$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-16x16.png';
-	$RVListenButton = "<button id='listenButton$id_listenbutton' class='butt js--triggerAnimation' type='button' value='Play' style='margin-left:5px;margin-right:5px;'><img style='vertical-align:middle;margin-right:7px;' src='$iconurl' title='$buttontext'></img><span style=''>$buttontext</span></button><script> listenButton$id_listenbutton.onclick = function(){if(responsiveVoice.isPlaying()){responsiveVoice.cancel();}else{responsiveVoice.speak('$postcontent', '$voice');}}; </script>";
+	$speakericon = "&#128266;";
+
+	$RVListenButton = "<button id='listenButton$id_listenbutton' class='butt js--triggerAnimation' type='button' value='Play' title='ResponsiveVoice Tap to Start/Stop Speech'><span>$speakericon $buttontext</span></button><script> listenButton$id_listenbutton.onclick = function(){if(responsiveVoice.isPlaying()){responsiveVoice.cancel();}else{responsiveVoice.speak('$postcontent', '$voice');}}; </script>";
 
 	return $RVListenButton;
 }
@@ -79,9 +81,10 @@ function RV_add_bblisten($atts, $includedtext = ""){
 
 	// Check if voice exists.
 	//$voice = RV_check_voice($voice);
+	//$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-16x16.png';
 
-	$iconurl = plugin_dir_url(__FILE__) . 'assets/images/responsivevoice-icon-16x16.png';
-	$RVBB = $includedtext."<button id='bb$id_bb' class='butt js--triggerAnimation' type='button' value='Play' style='margin-left:5px;margin-right:5px;'><img style='vertical-align:middle;margin-right:10px;' src='$iconurl' title='$buttontext'></img><span style=''>$buttontext</span></button><script> bb$id_bb.onclick = function(){if(responsiveVoice.isPlaying()){responsiveVoice.cancel();}else{responsiveVoice.speak('$cleantext', '$voice');}}; </script>";
+	$speakericon = "&#128266;";
+	$RVBB = $includedtext."<button id='bb$id_bb' class='butt js--triggerAnimation' type='button' value='Play' ' class='butt js--triggerAnimation' type='button' value='Play' title='ResponsiveVoice Tap to Start/Stop Speech'><span>$speakericon $buttontext</span></button><script> bb$id_bb.onclick = function(){if(responsiveVoice.isPlaying()){responsiveVoice.cancel();}else{responsiveVoice.speak('$cleantext', '$voice');}}; </script>";
 
 	return $RVBB;
 }
