@@ -5,7 +5,8 @@ Donate link: http://responsivevoice.com/wordpress-text-to-speech-plugin
 Tags: audio, google translate, Google Voice, speech, text to audio, text to speech, text-to-speech, text2speech, speech synthesis api, webspeech api, voice, espeak, javascript, Speak, speech, spoken, text, text-to-speech, talk, listen, accessibility, a11y, webreader, ivona, tts, arabic, mp3, ogg, buddypress, button, chinese, english, french, german, google, welcome, greetings, hebrew, html, html5, iPad, iphone, italian, jquery, link, links, menus, mobile, multilingual, page, pages, plugin, plugins, portuguese, Post, posts, readability, Russian, seo, shortcode, sidebar, sound, spanish, gspeech, stats, tablet, tts, widget, wordpress, button, blind, visual impairment, elderly, ADA, BS 8878:2010, WCAG 2.0, Web Content Accessibility Guidelines 2.0
 Requires at least: 3.6
 Tested up to: 4.2.3
-Stable tag: 1.1.3
+Stable tag: 1.1.4
+License: GPLv2
 
 ResponsiveVoice the leading HTML5 text to speech synthesis solution, is now available for WordPress. Over 51 languages through 168 voices.
 
@@ -34,14 +35,14 @@ Languages include UK English, US English, Spanish, French, Deutsch, Italian, Gre
 
 ### Usage:
 
-* ** It's Easy ** - To have the Listen button appear put the following shortcode anywhere in the text of your page or post.
+* It's Easy - To have the Listen button appear put the following shortcode anywhere in the text of your page or post.
 `[responsivevoice_button]`
 
 You can select a voice by using the "voice" parameter, and change the text that appears on the button with the "buttontext" parameter. The following shortcode will read in the US English Female voice, and the button will say "Play".
 `[responsivevoice_button voice="US English Female" buttontext="Play"]`
 A full list of ResponsiveVoice names is available at [Documentation](http://responsivevoice.org/text-to-speech-languages/). Default is UK English Female.
 
-* ** Read a whole page, or just sections of text ** - If you don't want the whole page or post to be read, just surround the salient text with 
+* Read a whole page, or just sections of text - If you don't want the whole page or post to be read, just surround the salient text with 
 `[responsivevoice]Text you want ResponsiveVoice to read [/responsivevoice]`
 This tag also supports the voice and buttontext parameters.
 
@@ -71,9 +72,14 @@ If you have experienced any problems with this plugin please let us know by cont
 
 == Changelog ==
 
+= 1.1.4 =
+* Releases will now be properly tagged, tags can be found in the "tags" folder as usual.
+* Added responsivevoice.css and responsivevoice-includes.php.
+* FIX: apostrophes, quotation marks, &, <, >, non-breaking spaces and en dashes will no longer be converted to ASCII codes.
+
 = 1.1.3 =
- * Removed ResponsiveVoice icon from buttons, now the speaker emoji is displayed instead.
- * FIX: Text in the button should not wrap around anymore.
+* Removed ResponsiveVoice icon from buttons, now the speaker emoji is displayed instead.
+* FIX: Text in the button should not wrap around anymore.
 
 = 1.1.2 =
 * FIX: multiple instances of ResponsiveVoice buttons now work on the same page.
@@ -98,5 +104,5 @@ If you have experienced any problems with this plugin please let us know by cont
 
 == Upgrade Notice ==
 
-= 1.1.3 =
-* New speaker icon!
+= 1.1.4 =
+* Added tagged releases, fixed problem with ASCII apostrophes and quotation marks.
